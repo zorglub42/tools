@@ -1,0 +1,6 @@
+www                       300  A      PUBLIC_IP
+smtp                     300  A      PUBLIC_IP
+imap                     300  A      PUBLIC_IP
+pop                     300  A      PUBLIC_IP
+@                         300  A      PUBLIC_IP
+@                       300  MX     10 smtp.zorglub42.fr.
