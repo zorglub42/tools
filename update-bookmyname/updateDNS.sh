@@ -87,3 +87,16 @@ while read l ; do
         DNS=`echo $DNS$l`
 done</tmp/DNS.$$
 rm /tmp/DNS.$$
+
+#Update DNS
+curl -s -i -X POST 'https://www.bookmyname.com/manager.cgi?cmd=gdp&mode=1' -H 'Referer: https://www.bookmyname.com/manager.cgi?cmd=gdp' -H "Cookie: $SID" -H 'Content-Type: application/x-www-form-urlencoded' --data 'gdp_zonefile='$DNS'&did='$DID'&mode=1&Submit=Valider'>/tmp/$$.res
+grep "Erreur" /tmp/$$.res
+grep "Votre demande de personnalisation" /tmp/$$.res
+grep "quelques minutes" /tmp/$$.res
+rm /tmp/$$.res
+
+#Logout
+curl 'https://www.bookmyname.com/logout.cgi' -H "Cookie: $SID"
+
+
+
