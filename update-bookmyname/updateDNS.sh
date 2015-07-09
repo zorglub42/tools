@@ -16,7 +16,7 @@
  # Authors     : Zorglub42 <contact(at)zorglub42.fr>
  #
  # Description :
- #      .../...
+ #     Update your domain DNS configuration on bookmyname with your current public IP
  #--------------------------------------------------------
 ##
 #bookmyname credentials
