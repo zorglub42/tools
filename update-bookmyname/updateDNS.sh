@@ -44,6 +44,7 @@ date
 #Set some static routes to ensure that public IP is the one provided by ISP and not VPN
 #ifconfig.me
 if [ "$INTERNET_GW" != "" ] ; then
+	#ifconfig.me
 	/sbin/route del -host 49.212.202.172
 	/sbin/route add -host 49.212.202.172 gw $INTERNET_GW
 	#monip.org
