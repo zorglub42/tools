@@ -6,3 +6,6 @@ A shell script to update bookmyname DNS according to yopur currint public IP add
   * DSN.txt DNS configuration template. PUBLIC_IP will be substituted by you real piblic IP at runtime
 
 Usefull for server behind a router using DHCP 
+
+##rpi
+Various scripts and tools for Raspberry PI
