@@ -16,6 +16,8 @@ INSTALL
      * RED wire (+5V) on Pin #4
      * BLCAK wire (GND) on Pin #6
      * YELLOW wire (TX) on Pin #8
+
+
 USAGE
 -------
   * lcdclear
