@@ -20,5 +20,10 @@ USAGE
 -------
   * lcdclear
     * clear LCD display
-    * example:
-      lcdclear   
+    * example: lcdclear   
+  * lcdprint
+    * display a text at specified line and col, line in 0-1, col in 0-16
+    * example: lcdprint 0 0 hello world;lcdprint 1 0 RPI Powaaaaa!
+  * lcdbacklight
+    * clange LCD display backlight luminosity. Luminosity in 0-255
+    * example: lcdbacklight 42
