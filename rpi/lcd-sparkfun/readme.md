@@ -12,4 +12,13 @@ INSTALL
      * git clone https://github.com/zorglub42/tools/
      * cd  tools/rpi/lcd-sparkfun/
      * make clean;make install
-I
+  * plug LCD wire on RPI cap
+     * RED wire (+5V) on Pin #4
+     * BLCAK wire (GND) on Pin #6
+     * YELLOW wire (TX) on Pin #8
+USAGE
+-------
+  * lcdclear
+    * clear LCD display
+    * example:
+      lcdclear   
