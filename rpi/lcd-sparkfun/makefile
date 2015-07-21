@@ -1,5 +1,5 @@
 ##--------------------------------------------------------
- # Module Name : sparkfun LCD utilies
+ # Module Name : sparkfun LCD Display utilies
  # Version : 1.0.0
  #
  #
