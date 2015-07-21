@@ -53,12 +53,17 @@ if [ "$INTERNET_GW" != "" ] ; then
 	#bookmyname
 	/sbin/route del -host 88.191.249.162
 	/sbin/route add -host 88.191.249.162 gw $INTERNET_GW
+	
+	#icanhazip.com
+	/sbin/route del -host 104.238.136.31
+	/sbin/route add -host 104.238.136.31 gw $INTERNET_GW
 fi
 
 
 #Get Public IP
-#MY_IP=`curl -s ifconfig.me/ip`
-MY_IP=`curl -s monip.org| grep "IP :"| awk '{print $5}'| awk -F'<' '{print $1}'`
+MY_IP=`curl -s http://icanhazip.com`
+#MY_IP=`curl -s http://ifconfig.me/ip`
+#MY_IP=`curl -s http://monip.org| grep "IP :"| awk '{print $5}'| awk -F'<' '{print $1}'`
 CURRENT_IP="";
 if [ -f $CURRENT_IP_FILE ] ; then
         CURRENT_IP=`cat $CURRENT_IP_FILE`
