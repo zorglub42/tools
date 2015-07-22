@@ -23,7 +23,6 @@ PAGE=1
 while [ 1 ] ; do
         vmstat -n 1 2 | tail -1 >/tmp/$$.cpu
         CPU=`cat /tmp/$$.cpu |tail -1|awk '{print 100 - $15}'`
-        setValue $DATA_FILE CPU $CPU
         case $PAGE in
                 1)
                         top -bn2 -d 1 |head >/tmp/$$.cpu
