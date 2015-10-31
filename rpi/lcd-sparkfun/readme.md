@@ -24,8 +24,9 @@ USAGE
     * clear LCD display
     * example: lcdclear   
   * lcdprint
-    * display a text at specified line and col, line in 0-1, col in 0-16
-    * example: lcdprint 0 0 hello world;lcdprint 1 0 RPI Powaaaaa!
+    * display a text at specified line and col, line in 0-1, col in 0-16. Text can be received as parameter or read stdin
+    * example 1: lcdprint 0 0 hello world;lcdprint 1 0 RPI Powaaaaa!
+    * example 2: echo "Hello world" |lcdprint 0 0 
   * lcdbacklight
     * clange LCD display backlight luminosity. Luminosity in 0-255
     * example: lcdbacklight 42
