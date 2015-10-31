@@ -33,8 +33,8 @@ void setLCDCursor(unsigned char cursor_position)
 }
 
 int main(int argc, char *argv[]){
-        if (argc < 4 ){
-                printf("Usage:\nlcdprint line col text\n");
+        if (argc < 3 ){
+                printf("Usage:\nlcdprint line col [text]\n");
                 return 1;
         }else{
                 int col=atoi(argv[2]);
@@ -49,14 +49,20 @@ int main(int argc, char *argv[]){
                 }
                 lcd=serialOpen("/dev/ttyAMA0", 9600);
                 setLCDCursor(line*16+col);
-                int i;
-                for (i=3;i<argc;i++){
-                        serialPuts(lcd, argv[i]);
-                        if (i<argc-1){
-                                serialPuts(lcd, " ");
-                        }
-                }
-
+				if (argc>3){
+					int i;
+					for (i=3;i<argc;i++){
+							serialPuts(lcd, argv[i]);
+							if (i<argc-1){
+									serialPuts(lcd, " ");
+							}
+					}
+				}else{
+					char c;
+					while ((c=getchar()) !=255){
+						serialPutchar(lcd, c); 
+					}
+				}
                 serialClose(lcd);
                 return 0;
         }
