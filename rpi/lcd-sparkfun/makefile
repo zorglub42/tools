@@ -20,13 +20,13 @@
 all: lcdclear lcdprint lcdbacklight
 
 lcdprint: lcdprint.c
-	gcc -Wall -o blink -lwiringPi lcdprint.c -o lcdprint
+	gcc -Wall  -lwiringPi lcdprint.c -o lcdprint
 
 lcdclear: lcdclear.c
-	gcc -Wall -o blink -lwiringPi lcdclear.c -o lcdclear
+	gcc -Wall -lwiringPi lcdclear.c -o lcdclear
 
 lcdbacklight: lcdbacklight.c
-	gcc -Wall -o blink -lwiringPi lcdbacklight.c -o lcdbacklight
+	gcc -Wall  -lwiringPi lcdbacklight.c -o lcdbacklight
 
 
 clean:
