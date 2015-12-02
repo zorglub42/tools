@@ -11,6 +11,8 @@ INSTALL
      * cp start-stop-button /etc/init.d
      * update-rc.d start-stop-button defaults
      * update-rc.d start-stop-button start
+
+
 CUSTOMIZATION
 -------------
 Defaults settings are to use GPIO4 and GPIO5.  
