@@ -17,5 +17,5 @@ CUSTOMIZATION
 -------------
 Defaults settings are to use GPIO4 and GPIO5.  
 Of course you may change this according to your needs  
-GPIO used are defined in start-stop-button-daemon
+GPIO used are defined in start-stop-button-daemon  
 See [this page](http://wiringpi.com/pins/) to have correspondance between GPIO# and header PINs 
