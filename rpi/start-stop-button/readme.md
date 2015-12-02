@@ -12,6 +12,7 @@ INSTALL
      * update-rc.d start-stop-button defaults
      * update-rc.d start-stop-button start
 
+![Schematic](https://raw.githubusercontent.com/zorglub42/tools/master/rpi/start-stop-button/schematic.png)
 
 CUSTOMIZATION
 -------------
