@@ -9,9 +9,10 @@ INSTALL
 ---------
   * install wiringPI library http://wiringpi.com/download-and-install/
   * install lcdutility
-     * git clone https://github.com/zorglub42/tools/
-     * cd  tools/rpi/lcd-sparkfun/
-     * make clean;make install
+
+		git clone https://github.com/zorglub42/tools/
+		cd  tools/rpi/lcd-sparkfun/
+		make clean;make install
   * plug LCD wire on RPI cap
      * RED wire (+5V) on Pin #4
      * BLCAK wire (GND) on Pin #6
