@@ -13,13 +13,16 @@ gpio mode $RELAY_GPIO out
 gpio mode $BUTTON_GPIO in
 
 gpio write $RELAY_GPIO  1
+#Infinite loop
 while [ 1 ] ; do
 	BUTT=`/usr/local/bin/gpio read $BUTTON_GPIO`
 	if [ $BUTT -eq 1 ] ; then
+		#wait while button is pushed
 		while [ $BUTT -eq 1 ] ; do
 			sleep 0.2
 			BUTT=`/usr/local/bin/gpio read $BUTTON_GPIO `
 		done
 		init 0
 	fi
+	sleep 0.2
 done
