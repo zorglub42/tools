@@ -1,6 +1,8 @@
 Solution to add a start-stop push button to a RPI  
 We're speaking here about a clean stop (init 0) and not a hard-reboot
 
+![Schematic](https://raw.githubusercontent.com/zorglub42/tools/master/rpi/start-stop-button/schematic.png)
+
 INSTALL
 ---------
   * install wiringPI library http://wiringpi.com/download-and-install/
