@@ -17,7 +17,7 @@
  #     makefile to compile and install LCD utilies
  #--------------------------------------------------------
 ##
-all: lcdclear lcdprint lcdbacklight
+all: lcdclear lcdprint lcdbacklight lcdbaud
 
 lcdprint: lcdprint.c
 	gcc -Wall  -lwiringPi lcdprint.c -o lcdprint
