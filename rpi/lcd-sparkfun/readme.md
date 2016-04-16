@@ -17,6 +17,11 @@ INSTALL
      * RED wire (+5V) on Pin #4
      * BLCAK wire (GND) on Pin #6
      * YELLOW wire (TX) on Pin #8
+     
+  * for RPI3 *** ONLY ****
+     * Add le line "core_freq=250" to /boot/config.txt
+     * Edit lcdconfig.h, comment reference to /dev/ttyAMA0 and uncomment reference to /dev/ttyS0
+     * reboot
 
 
 USAGE
