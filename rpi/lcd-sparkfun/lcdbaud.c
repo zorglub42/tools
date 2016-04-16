@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lcdconfig.h"
 
 
 
@@ -37,7 +38,7 @@ int main(int argc, char *argv[]){
 		usage(argv[0]);
 		return 1;
 	}
-	lcd=serialOpen("/dev/ttyAMA0", atoi(argv[1]));
+	lcd=serialOpen(SERIAL, atoi(argv[1]));
 	serialPutchar(lcd, 129);
 	serialPutchar(lcd, argv[2][0]-'0');
 	serialClose(lcd);

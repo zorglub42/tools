@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lcdconfig.h"
 
 int lcd;
 
@@ -39,7 +40,7 @@ int main(int argc, char *argv[]){
                         printf("backlight must be between 0 and 255\n");
                         return 2;
                 }
-                lcd=serialOpen("/dev/ttyAMA0", 9600);
+                lcd=serialOpen(SERIAL, BAUD_RATE);
                 setBacklight(atoi(argv[1]));
                 serialClose(lcd);
         return 0;

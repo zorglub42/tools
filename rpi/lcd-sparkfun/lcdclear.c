@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lcdconfig.h"
 
 
 
@@ -34,7 +35,7 @@ void clearDisplay()
 
 
 int main(){
-        lcd=serialOpen("/dev/ttyAMA0", 9600);
+        lcd=serialOpen(SERIAL, BAUD_RATE);
         clearDisplay();
         serialClose(lcd);
         return 0;

@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lcdconfig.h"
 
 
 
@@ -47,7 +48,7 @@ int main(int argc, char *argv[]){
                         printf("col must be between 0 and 1\n");
                         return 3;
                 }
-                lcd=serialOpen("/dev/ttyAMA0", 9600);
+                lcd=serialOpen(SERIAL, BAUD_RATE);
                 setLCDCursor(line*16+col);
 				if (argc>3){
 					int i;
