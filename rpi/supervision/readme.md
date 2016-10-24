@@ -18,7 +18,7 @@ The software is using libcurl and WinringPi https://projects.drogon.net/raspberr
 
 To compile, install WiringPi and libcurl use the command
 
-gcc -Wall -o supervise supervise.c -lwiringPi -pthread -lcurl
+    gcc -Wall -o supervise supervise.c -lwiringPi -pthread -lcurl
 
 To enable trace and tests compile with -D__DEBUG__
 
