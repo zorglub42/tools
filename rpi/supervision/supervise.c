@@ -1,5 +1,5 @@
 /*
- * Module Name : Supervice
+ * Module Name : Supervise
  * Version : 1.0.0
  *
  *
@@ -11,7 +11,7 @@
  * File Name   : supervise.c
  *
  * Created     : 2016-10
- * Authors     : Simon Bécot <johnny.macmuller(at)gmail.com>
+ * Authors     : Simon BÃ©cot <johnny.macmuller(at)gmail.com>
  *
  * Description :
  *  This software is managing used to supervive GPIO pins of
@@ -519,8 +519,8 @@ void *checkStatus(void *x)
 	stopLed(STATUS_LED);
        switch (newStatus)
        {
-          case PLAYING : infiniteBlinkLed(STATUS_LED, 1500, 1500); break;
-          case PAUSED  : infiniteBlinkLed(STATUS_LED, 300, 1500); break;
+          case PLAYING : infiniteBlinkLed(STATUS_LED, 1200, 1200); break;
+	       case PAUSED  : infiniteBlinkLed(STATUS_LED, 500, 500); break;
           case NOT_PLAYING : 
           default: stopLed(STATUS_LED); break;
         }
