@@ -571,7 +571,7 @@ void infiniteLoop()
 
   for (;;)
   {
-      char i;
+      int i;
       for (i = 0; i < NBBUTTON; i++)
       {
         int but = digitalRead(button[i]);
