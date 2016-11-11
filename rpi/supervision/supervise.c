@@ -1,5 +1,5 @@
 /*
- * Module Name : Supervise
+ * Module Name : Supervice
  * Version : 1.0.0
  *
  *
@@ -213,13 +213,13 @@ void systemShutdown()
 #ifdef __DEBUG__
     printf("systemShutdown");
 #endif
-    doBlinkLed(POWER_LED, 4, 200, 200);
+    doBlinkLed(POWER_LED, 2, 100, 100);
     while (ledThread[POWER_LED] != 0) ;
     startLed(POWER_LED);
 #ifndef __DEBUG__
     system("init 0");
 #else
-	delay(3000);
+	delay(1000);
     exit(0);
 #endif
     return ;// NULL;
@@ -233,13 +233,13 @@ void systemRestart()
 #ifdef __DEBUG__
     printf("systemRestart");
 #endif
-    doBlinkLed(POWER_LED, 2, 200, 200);
+    doBlinkLed(POWER_LED, 4, 100, 100);
     while (ledThread[POWER_LED] != 0) ;
     startLed(POWER_LED);
 #ifndef __DEBUG__
     system("init 6");
 #else
-	delay(3000);
+	delay(1000);
 #endif
     return ;// NULL;
 }
@@ -309,14 +309,14 @@ char* postXBMCRequest(char* method, char* params)
    //CURLcode res;
    
 	if (curl) {
-		sprintf(buffer, "{\"jsonrpc\": \"2.0\", \"method\": \"Player.%s\"", method);
+//		sprintf(buffer, "{\"jsonrpc\": \"2.0\", \"method\": \"Player.%s\"", method);
 		if (NULL != params)
 		{
-	                sprintf(buffer, "{\"jsonrpc\": \"2.0\", \"method\": \"Player.%s\", \"params\": %s, \"id\": 99}", method, params);
+	                sprintf(buffer, "{\"jsonrpc\": \"2.0\", \"method\": \"%s\", \"params\": %s, \"id\": 99}", method, params);
 		}
 		else
 		{
-                     sprintf(buffer, "{\"jsonrpc\": \"2.0\", \"method\": \"Player.%s\", \"id\": 99}", method);
+                     sprintf(buffer, "{\"jsonrpc\": \"2.0\", \"method\": \"%s\", \"id\": 99}", method);
 		}
 		// logs
 #ifdef __DEBUG__
@@ -396,15 +396,20 @@ int getIntValue(const char* input, const char* pattern)
 
 /******************************************/
 // Play/Pause the Kodi current media
+// Or select current one if nothing is played
 /******************************************/
 void play_pause() {
-  char* result = postXBMCRequest("GetActivePlayers", NULL);
+  char* result = postXBMCRequest("Player.GetActivePlayers", NULL);
   int pId = getIntValue(result, "playerid");
   char params[MAX_BUFFER];
   if (pId != -1)
   {
     sprintf(params, "{ \"playerid\": %i }", pId);
-    postXBMCRequest("PlayPause", params);
+    postXBMCRequest("Player.PlayPause", params);
+  }
+  else
+  {
+    postXBMCRequest("Input.Select", NULL);
   }
   return ;
 }
@@ -413,17 +418,37 @@ void play_pause() {
 // Stops playing current media
 /******************************************/
 void stop_player() {
-  char* result = postXBMCRequest("GetActivePlayers", NULL);
+  char* result = postXBMCRequest("Player.GetActivePlayers", NULL);
   int pId = getIntValue(result, "playerid");
   char params[MAX_BUFFER];
   sprintf(params, "{ \"playerid\": %i }", pId);
-  postXBMCRequest("Stop", params);
+  postXBMCRequest("Player.Stop", params);
   return ;
 }
 
 /******************************************/
-/* TODO: Up, Down, Left, Right */
+/* Enter Up, Down, Left, Right to XBMC    */
 /******************************************/
+void up() {
+  postXBMCRequest("Input.up", NULL);
+  return ;
+}
+
+void down() {
+  postXBMCRequest("Input.down", NULL);
+  return ;
+}
+
+void left() {
+  postXBMCRequest("Input.left", NULL);
+  return ;
+}
+
+void right() {
+  postXBMCRequest("Input.right", NULL);
+  return ;
+}
+
 
 /*************************************************************/
 /* returns the playing status of current media player        */
@@ -435,7 +460,7 @@ char getPlayingStatus(int* id)
 #ifdef __DEBUG__
    printf("getPlayingStatus\n");
 #endif
-   char* result = postXBMCRequest("GetActivePlayers", NULL);
+   char* result = postXBMCRequest("Player.GetActivePlayers", NULL);
 #ifdef __DEBUG__
    printf("Result %s\n", result);
 #endif
@@ -445,7 +470,7 @@ char getPlayingStatus(int* id)
    {
 	  char params[MAX_BUFFER];
 	  sprintf(params, "{ \"playerid\": %i, \"properties\" : [\"speed\"] }", pId);
-	  postXBMCRequest("GetProperties", params);
+	  postXBMCRequest("Player.GetProperties", params);
 	  int speed = getIntValue(result, "speed");
 	  switch (speed)
 	  {
@@ -520,7 +545,7 @@ void *checkStatus(void *x)
        switch (newStatus)
        {
           case PLAYING : infiniteBlinkLed(STATUS_LED, 1200, 1200); break;
-	       case PAUSED  : infiniteBlinkLed(STATUS_LED, 500, 500); break;
+          case PAUSED  : infiniteBlinkLed(STATUS_LED, 500, 500); break;
           case NOT_PLAYING : 
           default: stopLed(STATUS_LED); break;
         }
@@ -644,6 +669,23 @@ void test4()
   delay(1000);
 }
 
+// Tests input arrows (buttons)
+void test5()
+{
+    up();
+    delay(1000);
+    down();
+    delay(1000);
+    left();
+    delay(1000);
+    right();
+    up();
+    delay(1000);
+    up();
+    delay(1000);
+    play_pause();
+}
+
 #endif
 
 
@@ -662,5 +704,6 @@ int main (void)
 //  test2();
 //  test3();
 //  test4();
+//  test5();
   return 0 ;
 }
