@@ -11,7 +11,7 @@
  * File Name   : supervise.h
  *
  * Created     : 2016-10
- * Authors     : Simon Bécot <johnny.macmuller(at)gmail.com>
+ * Authors     : Simon BÃ©cot <johnny.macmuller(at)gmail.com>
  *
  * Description :
  *  This software is managing used to supervive GPIO pins of
@@ -64,9 +64,11 @@ pthread_t ledThread[NBLED];
 
 // Long push 2 seconds
 #define LONG_PUSH_TIME 2000
+// Repeat time (when there is no long push defined)
+#define REPEAT_PUSH_TIME 500
 
 // PIN FOR PAUSE GPIO
-#define BUTTON_PAUSE_GPIO 3 
+#define BUTTON_PAUSE_GPIO 3
 // PIN FOR ON/SHUTDOWN
 #define BUTTON_ON_GPIO 4
 
@@ -79,7 +81,7 @@ void (*actionPushButton[NBBUTTON])();
 // WARNING: this array has to be initialized in init procedure.
 void (*actionLongPushButton[NBBUTTON])();
 
-// GPIO for the relay 
+// GPIO for the relay
 // Relay for ON/OFF
 #define RELAY_GPIO 5
 
@@ -96,5 +98,3 @@ void (*actionLongPushButton[NBBUTTON])();
 #define MAX_BUFFER 60
 // Max number of digit for Kodi returned values (used for player Id and Speed)
 #define MAX_DIGIT 2
-
-#endif
